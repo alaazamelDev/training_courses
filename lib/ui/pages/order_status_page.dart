@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:progress_timeline/progress_timeline.dart';
 import 'package:training_courses/constants/constants.dart';
-import 'package:training_courses/ui/widgets/appbar_back_button.dart';
-import 'package:training_courses/ui/widgets/page_title.dart';
+import 'package:training_courses/ui/widgets/widgets.dart';
 
 class OrderStatusPage extends StatelessWidget {
   const OrderStatusPage({Key? key}) : super(key: key);
@@ -13,54 +11,159 @@ class OrderStatusPage extends StatelessWidget {
       backgroundColor: kPrimaryColor,
       appBar: AppBar(
         centerTitle: true,
-        leading: const AppBarBackButton(),
+        leading: const SizedBox(),
         backgroundColor: kPrimaryColor,
         title: const PageTitle(
           title: 'Order Status',
           titleColor: kSecondaryColor,
         ),
         elevation: 0,
+        actions: [
+          IconButton(
+            onPressed: () {},
+            splashRadius: 20,
+            icon: const RotatedBox(
+              quarterTurns: 1,
+              child: Icon(
+                Icons.arrow_circle_up_rounded,
+                size: kDefaultIconSize,
+                color: kSecondaryColor,
+              ),
+            ),
+          ),
+        ],
       ),
-      body: const ProgressStepper(),
+      body: Column(
+        children: [
+          SizedBox(height: getScreenHeight(context) * 0.05),
+          Expanded(
+            child: ListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: ordersList.length,
+              itemBuilder: (BuildContext context, int index) {
+                return OrderEntry(
+                  index: index + 1,
+                  orderCurrentStage: ordersList[index]['currentStage'],
+                  failedStages: ordersList[index]['failedStages'],
+                  onPressed: () {
+                    _showNoteSheet(context);
+                  },
+                );
+              },
+            ),
+          ),
+          Row(
+            children: [
+              const Expanded(child: SizedBox()),
+              Expanded(
+                flex: 5,
+                child: Container(
+                  decoration: const BoxDecoration(
+                    border: Border(
+                      left: BorderSide(color: kSecondaryColor),
+                      right: BorderSide(color: kSecondaryColor),
+                    ),
+                  ),
+                ),
+              ),
+              const Expanded(child: SizedBox()),
+            ],
+          )
+        ],
+      ),
     );
   }
 }
 
-class ProgressStepper extends StatefulWidget {
-  const ProgressStepper({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  State<ProgressStepper> createState() => _ProgressStepperState();
-}
-
-class _ProgressStepperState extends State<ProgressStepper> {
-  late ProgressTimeline progressTimeline;
-  List<SingleState> stages = [
-    SingleState(stateTitle: 'request'),
-    SingleState(stateTitle: 'review'),
-    SingleState(stateTitle: 'approval'),
-    SingleState(stateTitle: 'reject'),
-    SingleState(stateTitle: 'end'),
-  ];
-
-  @override
-  void initState() {
-    progressTimeline = ProgressTimeline(
-      states: stages,
-      iconSize: kDefaultIconSize,
-      textStyle: TextStyle(
-        color: kSecondaryColor,
-        fontSize: kStepperFontSize,
+void _showNoteSheet(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    backgroundColor: kPrimaryColor,
+    elevation: 1,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(30),
+        topRight: Radius.circular(30),
       ),
-    );
-
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return progressTimeline;
-  }
+    ),
+    builder: (context) {
+      return Container(
+        height: getScreenHeight(context) * 0.5,
+        width: getScreenWidth(context),
+        padding: EdgeInsets.symmetric(
+          horizontal: kDefaultHorizontalPadding,
+          vertical: kDefaultVerticalPadding * 0.5,
+        ),
+        child: Column(
+          children: [
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(width: kDefaultHorizontalPadding * 1.5),
+                  const PageTitle(
+                    title: 'Note',
+                    titleColor: kSecondaryColor,
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      // Close sheet
+                      Navigator.pop(context);
+                    },
+                    splashRadius: 25,
+                    icon: const Icon(
+                      Icons.close_rounded,
+                      color: kSecondaryColor,
+                      size: kDefaultIconSize,
+                    ),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(height: kDefaultVerticalPadding),
+            Expanded(
+              flex: 4,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    'Approved, we wish you success',
+                    style: TextStyle(
+                      color: kSecondaryColor,
+                      fontSize: kTextFontSize,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    style: TextButton.styleFrom(
+                      backgroundColor: kAccentColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: kDefaultHorizontalPadding * 2.0,
+                        vertical: kDefaultVerticalPadding * 0.25,
+                      ),
+                      child: Text(
+                        'Confirmation',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: kTitlesFontSize,
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+    },
+  );
 }

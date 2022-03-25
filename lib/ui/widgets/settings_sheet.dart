@@ -5,7 +5,9 @@ import 'package:training_courses/ui/widgets/widgets.dart';
 class SettingsSheet extends StatelessWidget {
   const SettingsSheet({
     Key? key,
+    required this.onOptionPressed,
   }) : super(key: key);
+  final Function(int) onOptionPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +56,9 @@ class SettingsSheet extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ListTile(
-                      onTap: () {},
+                      onTap: () {
+                        onOptionPressed(index);
+                      },
                       contentPadding: EdgeInsets.symmetric(
                         horizontal: kDefaultHorizontalPadding,
                       ),

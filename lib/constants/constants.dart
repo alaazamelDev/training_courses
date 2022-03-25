@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:training_courses/constants/enums.dart';
 import 'package:training_courses/ui/pages/pages.dart';
 
 // constant colors
@@ -18,8 +19,9 @@ const double kDefaultIconSize = 30;
 // font sizes
 final kTitlesFontSize = 16.sp;
 final kTextFontSize = 14.sp;
+final kCourseTitleFontSize = 24.sp;
 final kUsernameFontSize = 24.sp;
-final kStepperFontSize = 12.sp;
+final kStepperFontSize = 10.sp;
 
 // width & height constants
 double getScreenWidth(BuildContext context) {
@@ -38,6 +40,10 @@ var routes = {
   '/courses': (context) => const CoursesPage(),
   '/order_status': (context) => const OrderStatusPage(),
   '/info': (context) => const InfoPage(),
+  '/notifications': (context) => const NotificationsPage(),
+  '/rating': (context) => const RatingPage(),
+  '/course_details': (context) => const CourseDetailsPage(),
+  '/home': (context) => const HomePage(),
 };
 
 // profile page options list
@@ -182,5 +188,99 @@ final List previousCourses = [
     'image': 'assets/course.jpg',
     'name': 'Previous',
     'date': '98765432',
+  },
+];
+
+// Notifications list
+final List notificationsList = [
+  {'type': NotificationType.success},
+  {'type': NotificationType.newCourse},
+  {'type': NotificationType.warning},
+  {'type': NotificationType.reminder},
+  {'type': NotificationType.success},
+  {'type': NotificationType.warning},
+  {'type': NotificationType.success},
+];
+
+// Rating list
+final List ratingList = [
+  {
+    'icon': Icons.person_rounded,
+    'title': 'Overall evaluation',
+    'rate': 0.0,
+  },
+  {
+    'icon': Icons.menu_book_rounded,
+    'title': 'Course Content',
+    'rate': 0.0,
+  },
+  {
+    'icon': Icons.schedule_rounded,
+    'title': 'Time',
+    'rate': 0.0,
+  },
+  {
+    'icon': Icons.person_rounded,
+    'title': 'Presenter',
+    'rate': 0.0,
+  },
+  {
+    'icon': Icons.place_outlined,
+    'title': 'Location',
+    'rate': 0.0,
+  },
+  {
+    'icon': null,
+    'title': 'Extent of benefit',
+    'rate': 0.0,
+  },
+  {
+    'icon': null,
+    'title': 'Extent interaction',
+    'rate': 0.0,
+  },
+];
+
+// Settings sheet options list
+final List courseDetailsList = [
+  {
+    'icon': Icons.account_balance_rounded,
+    'title': 'club name',
+  },
+  {
+    'icon': Icons.person_rounded,
+    'title': 'supervisor\'s name',
+  },
+  {
+    'icon': Icons.person_rounded,
+    'title': 'coach\'s name',
+  },
+  {
+    'icon': Icons.person_rounded,
+    'title': 'Subscribers',
+  },
+];
+
+// Settings sheet options list
+final List ordersList = [
+  {
+    'currentStage': 3,
+    'failedStages': <int>[],
+  },
+  {
+    'currentStage': 4,
+    'failedStages': <int>[],
+  },
+  {
+    'currentStage': 5,
+    'failedStages': <int>[],
+  },
+  {
+    'currentStage': 3,
+    'failedStages': <int>[4, 5],
+  },
+  {
+    'currentStage': 1,
+    'failedStages': <int>[],
   },
 ];

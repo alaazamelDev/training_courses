@@ -140,7 +140,17 @@ void _showSettingsSheet(BuildContext context) {
       ),
     ),
     builder: (BuildContext context) {
-      return const SettingsSheet();
+      return SettingsSheet(
+        onOptionPressed: (index) {
+          switch (index) {
+            case 0:
+              break;
+            case 1:
+              Navigator.pushReplacementNamed(context, '/notifications');
+              break;
+          }
+        },
+      );
     },
   );
 }

@@ -16,7 +16,7 @@ class InfoPage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            splashRadius: 25,
+            splashRadius: 20,
             icon: const RotatedBox(
               quarterTurns: 1,
               child: Icon(
