@@ -13,10 +13,7 @@ class ProfilePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: kSecondaryColor,
         centerTitle: true,
-        title: Text(
-          'Profile',
-          style: TextStyle(color: kPrimaryColor, fontSize: kTitlesFontSize),
-        ),
+        title: const PageTitle(title: 'Profile'),
         leading: IconButton(
           onPressed: () {
             // Implement onPressed functionality
@@ -83,7 +80,7 @@ class ProfilePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     const Expanded(
-                      flex: 2,
+                      flex: 1,
                       child: UserInformation(
                         username: 'Username',
                         phonenumber: 'Phone number',
@@ -101,6 +98,20 @@ class ProfilePage extends StatelessWidget {
                             return OptionListTile(
                               icon: profileOptions[index]['icon'],
                               title: profileOptions[index]['title'],
+                              onPressed: () {
+                                // Move to the selected page
+                                switch (index) {
+                                  case 0:
+                                    Navigator.pushNamed(context, '/clubs');
+                                    break;
+                                  case 1:
+                                    _showSettingsSheet(context);
+                                    break;
+                                  case 2:
+                                    // Implement Logout functionality
+                                    break;
+                                }
+                              },
                             );
                           },
                         ),
@@ -115,4 +126,21 @@ class ProfilePage extends StatelessWidget {
       ),
     );
   }
+}
+
+void _showSettingsSheet(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    backgroundColor: kPrimaryColor,
+    elevation: 1,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(30),
+        topRight: Radius.circular(30),
+      ),
+    ),
+    builder: (BuildContext context) {
+      return const SettingsSheet();
+    },
+  );
 }

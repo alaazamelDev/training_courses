@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:training_courses/constants/constants.dart';
-import 'package:training_courses/ui/widgets/option_listtile.dart';
+import 'package:training_courses/ui/widgets/widgets.dart';
 
 class ModificationPage extends StatelessWidget {
   const ModificationPage({Key? key}) : super(key: key);
@@ -13,17 +13,7 @@ class ModificationPage extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: kPrimaryColor,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          splashRadius: 20,
-          icon: const Icon(
-            Icons.arrow_back_ios_new_rounded,
-            size: 30,
-            color: kSecondaryColor,
-          ),
-        ),
+        leading: const AppBarBackButton(),
       ),
       body: Column(
         children: [
@@ -79,6 +69,10 @@ class ModificationPage extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return index == 3
                       ? ListTile(
+                          contentPadding: EdgeInsets.symmetric(
+                            horizontal: kDefaultHorizontalPadding,
+                            vertical: kDefaultVerticalPadding * 0.4,
+                          ),
                           tileColor: kAccentColor.withOpacity(0.8),
                           leading: Icon(
                             modificationOptions[index]['icon'],
@@ -95,10 +89,17 @@ class ModificationPage extends StatelessWidget {
                             modificationOptions[index]['trailing'],
                             color: Colors.black,
                           ),
+                          onTap: () {
+                            // On Name item pressed event
+                          },
                         )
                       : OptionListTile(
                           icon: modificationOptions[index]['icon'],
                           title: modificationOptions[index]['title'],
+                          dividerColor: kSecondaryColor.withOpacity(0.5),
+                          onPressed: () {
+                            // implement navigation to required screen
+                          },
                         );
                 },
               ),
@@ -106,27 +107,12 @@ class ModificationPage extends StatelessWidget {
           ),
           Expanded(
             child: Center(
-              child: TextButton(
-                onPressed: () {},
-                style: TextButton.styleFrom(
-                  backgroundColor: kAccentColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: kDefaultHorizontalPadding * 2.5,
-                    vertical: kDefaultVerticalPadding * 0.5,
-                  ),
-                  child: Text(
-                    'Save Changes',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: kTitlesFontSize,
-                    ),
-                  ),
-                ),
+              child: SubmitButton(
+                title: 'Save Changes',
+                onPressed: () {
+                  // Implement Save Changes functionality
+                  Navigator.pop(context);
+                },
               ),
             ),
           ),
@@ -135,3 +121,4 @@ class ModificationPage extends StatelessWidget {
     );
   }
 }
+

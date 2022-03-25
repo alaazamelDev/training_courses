@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:training_courses/constants/constants.dart';
-import 'package:training_courses/ui/pages/profile_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +20,7 @@ class MyApp extends StatelessWidget {
           primaryColor: kPrimaryColor,
         ),
         routes: routes,
-        initialRoute: '/',
+        initialRoute: '/info',
       ),
     );
   }
