@@ -28,20 +28,7 @@ class _CourseDetailsPageState extends State<CourseDetailsPage> {
         centerTitle: true,
         elevation: 0,
         leading: const SizedBox(),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            splashRadius: 20,
-            icon: const RotatedBox(
-              quarterTurns: 1,
-              child: Icon(
-                Icons.arrow_circle_up_rounded,
-                size: kDefaultIconSize,
-                color: kSecondaryColor,
-              ),
-            ),
-          ),
-        ],
+        actions: const [AppBarBackButton()],
         title: const PageTitle(
           title: 'Training Courses',
           titleColor: kSecondaryColor,

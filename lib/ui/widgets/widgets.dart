@@ -10,6 +10,7 @@ export 'settings_sheet.dart';
 export 'submit_button.dart';
 export 'user_information.dart';
 export 'step_progress_view.dart';
+export 'service_rating.dart';
 export 'order_entry.dart';
 export 'fragments/home_fragment.dart';
 export 'fragments/profile_fragment.dart';

@@ -25,10 +25,13 @@ class _AppBarBackButtonState extends State<AppBarBackButton> {
         Navigator.pop(context);
       },
       splashRadius: 20,
-      icon: Icon(
-        Icons.arrow_back_ios_new_rounded,
-        size: kDefaultIconSize,
-        color: widget.buttonColor ?? kSecondaryColor,
+      icon: RotatedBox(
+        quarterTurns: 1,
+        child: Icon(
+          Icons.arrow_circle_up_rounded,
+          size: kDefaultIconSize,
+          color: widget.buttonColor ?? kSecondaryColor,
+        ),
       ),
     );
   }

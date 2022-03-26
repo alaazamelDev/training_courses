@@ -10,13 +10,14 @@ class ClubsPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: kPrimaryColor,
       appBar: AppBar(
+        leading: const SizedBox(),
         centerTitle: true,
-        leading: const AppBarBackButton(),
         backgroundColor: kPrimaryColor,
         title: const PageTitle(
           title: 'Clubs',
           titleColor: kSecondaryColor,
         ),
+        actions: const [AppBarBackButton()],
         elevation: 0,
       ),
       body: Padding(

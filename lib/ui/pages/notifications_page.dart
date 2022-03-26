@@ -14,22 +14,12 @@ class NotificationsPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
         centerTitle: true,
-        leading: const AppBarBackButton(buttonColor: kPrimaryColor),
+        leading: const SizedBox(),
         title: const PageTitle(
           title: 'Notifications',
           titleColor: kSecondaryColor,
         ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            splashRadius: 20,
-            icon: const Icon(
-              Icons.add_circle_outline_rounded,
-              size: kDefaultIconSize,
-              color: kSecondaryColor,
-            ),
-          )
-        ],
+        actions: const [AppBarBackButton()],
       ),
       body: SizedBox(
         width: getScreenWidth(context),

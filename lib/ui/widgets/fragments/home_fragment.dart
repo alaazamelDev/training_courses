@@ -78,7 +78,7 @@ class HomeFragment extends StatelessWidget {
                             name: currentCourses[index]['name'],
                             date: currentCourses[index]['date'],
                             onPressed: () {
-                              // Go to course details
+                              Navigator.pushNamed(context, '/course_details');
                             },
                           ),
                         );

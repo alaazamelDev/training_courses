@@ -18,13 +18,16 @@ class _CoursesPageState extends State<CoursesPage> {
     return Scaffold(
       backgroundColor: kPrimaryColor,
       appBar: AppBar(
-        leading: const AppBarBackButton(
-          buttonColor: kPrimaryColor,
-        ),
+        leading: const SizedBox(),
         backgroundColor: kSecondaryColor,
         title: PageTitle(
           title: '$name Training Courses',
         ),
+        actions: const [
+          AppBarBackButton(
+            buttonColor: kPrimaryColor,
+          )
+        ],
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(
@@ -106,9 +109,17 @@ class _CoursesPageState extends State<CoursesPage> {
                       date: selectedTapIndex == 0
                           ? currentCourses[index]['date']
                           : previousCourses[index]['date'],
+                      showExtraButton: true,
+                      extraButtonColor:
+                          selectedTapIndex == 0 ? kAccentColor : Colors.red,
+                      extraButtonTitle:
+                          selectedTapIndex == 0 ? 'details' : 'rate',
                       onPressed: () {
-                        // Implement on course card pressed
-                        Navigator.pushNamed(context, '/order_status');
+                        if (selectedTapIndex == 0) {
+                          Navigator.pushNamed(context, '/course_details');
+                        } else {
+                          Navigator.pushNamed(context, '/rating');
+                        }
                       },
                     );
                   },

@@ -13,7 +13,8 @@ class ModificationPage extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: kPrimaryColor,
-        leading: const AppBarBackButton(),
+        leading: const SizedBox(),
+        actions: const [AppBarBackButton()],
       ),
       body: Column(
         children: [
@@ -121,4 +122,3 @@ class ModificationPage extends StatelessWidget {
     );
   }
 }
-

@@ -18,19 +18,8 @@ class OrderStatusPage extends StatelessWidget {
           titleColor: kSecondaryColor,
         ),
         elevation: 0,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            splashRadius: 20,
-            icon: const RotatedBox(
-              quarterTurns: 1,
-              child: Icon(
-                Icons.arrow_circle_up_rounded,
-                size: kDefaultIconSize,
-                color: kSecondaryColor,
-              ),
-            ),
-          ),
+        actions: const [
+          AppBarBackButton(),
         ],
       ),
       body: Column(
