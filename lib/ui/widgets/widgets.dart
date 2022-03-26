@@ -11,3 +11,7 @@ export 'submit_button.dart';
 export 'user_information.dart';
 export 'step_progress_view.dart';
 export 'order_entry.dart';
+export 'fragments/home_fragment.dart';
+export 'fragments/profile_fragment.dart';
+export 'fragments/home_appbar.dart';
+export 'fragments/profile_appbar.dart';

@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           primaryColor: kPrimaryColor,
         ),
         routes: routes,
-        initialRoute: '/home',
+        initialRoute: '/',
       ),
     );
   }

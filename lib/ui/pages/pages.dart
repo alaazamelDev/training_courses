@@ -6,5 +6,4 @@ export 'info_page.dart';
 export 'modification_page.dart';
 export 'notifications_page.dart';
 export 'order_status_page.dart';
-export 'profile_page.dart';
 export 'rating_page.dart';

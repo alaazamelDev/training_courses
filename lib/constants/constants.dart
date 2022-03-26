@@ -34,7 +34,7 @@ double getScreenHeight(BuildContext context) {
 
 // Routes
 var routes = {
-  '/': (context) => const ProfilePage(),
+  '/': (context) => const HomePage(),
   '/modification': (context) => const ModificationPage(),
   '/clubs': (context) => const ClubsPage(),
   '/courses': (context) => const CoursesPage(),
@@ -43,7 +43,6 @@ var routes = {
   '/notifications': (context) => const NotificationsPage(),
   '/rating': (context) => const RatingPage(),
   '/course_details': (context) => const CourseDetailsPage(),
-  '/home': (context) => const HomePage(),
 };
 
 // profile page options list
