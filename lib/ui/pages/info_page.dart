@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:training_courses/constants/constants.dart';
+import 'package:training_courses/ui/widgets/appbar_back_button.dart';
 import 'package:training_courses/ui/widgets/info_card.dart';
 
 class InfoPage extends StatelessWidget {
@@ -13,20 +14,7 @@ class InfoPage extends StatelessWidget {
         backgroundColor: kPrimaryColor,
         elevation: 0,
         leading: const SizedBox(),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            splashRadius: 20,
-            icon: const RotatedBox(
-              quarterTurns: 1,
-              child: Icon(
-                Icons.arrow_circle_up_rounded,
-                size: kDefaultIconSize,
-                color: kSecondaryColor,
-              ),
-            ),
-          )
-        ],
+        actions: const [AppBarBackButton()],
       ),
       body: Column(
         children: [
