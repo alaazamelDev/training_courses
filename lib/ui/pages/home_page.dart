@@ -14,7 +14,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kSecondaryColor,
+      backgroundColor: pageIndex == 0 ? kSecondaryColor : kPrimaryColor,
       bottomNavigationBar: CustomButtomNavigationBar(
         onTap: (index) {
           if (pageIndex != index) {

@@ -8,10 +8,12 @@ class OptionListTile extends StatelessWidget {
     required this.icon,
     this.dividerColor,
     required this.onPressed,
+    this.titleColor,
   }) : super(key: key);
   final String title;
   final IconData icon;
   final Color? dividerColor;
+  final Color? titleColor;
   final Function() onPressed; // on list item pressed event
 
   @override
@@ -31,12 +33,12 @@ class OptionListTile extends StatelessWidget {
             ),
             leading: Icon(
               icon,
-              color: kGreyColor,
+              color: titleColor ?? kGreyColor,
             ),
             title: Text(
               title,
               style: TextStyle(
-                color: kGreyColor,
+                color: titleColor ?? kGreyColor,
                 fontSize: kTextFontSize,
               ),
             ),

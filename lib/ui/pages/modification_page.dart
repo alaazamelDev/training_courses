@@ -25,7 +25,8 @@ class ModificationPage extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: ScreenUtil().setHeight(40),
-                  backgroundImage: const AssetImage('assets/user.jpg'),
+                  backgroundImage: const AssetImage('assets/user.png'),
+                  backgroundColor: kSecondaryColor,
                 ),
                 SizedBox(width: kDefaultHorizontalPadding),
                 Column(
@@ -63,46 +64,30 @@ class ModificationPage extends StatelessWidget {
           Expanded(
             flex: 3,
             child: Center(
-              child: ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: modificationOptions.length,
-                itemBuilder: (context, index) {
-                  return index == 3
-                      ? ListTile(
-                          contentPadding: EdgeInsets.symmetric(
-                            horizontal: kDefaultHorizontalPadding,
-                            vertical: kDefaultVerticalPadding * 0.4,
-                          ),
-                          tileColor: kAccentColor.withOpacity(0.8),
-                          leading: Icon(
-                            modificationOptions[index]['icon'],
-                            color: Colors.black,
-                          ),
-                          title: Text(
-                            modificationOptions[index]['title'],
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: kTextFontSize,
-                            ),
-                          ),
-                          trailing: Icon(
-                            modificationOptions[index]['trailing'],
-                            color: Colors.black,
-                          ),
-                          onTap: () {
-                            // On Name item pressed event
-                          },
-                        )
-                      : OptionListTile(
-                          icon: modificationOptions[index]['icon'],
-                          title: modificationOptions[index]['title'],
-                          dividerColor: kSecondaryColor.withOpacity(0.5),
-                          onPressed: () {
-                            // implement navigation to required screen
-                          },
-                        );
-                },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Divider(
+                    color: kSecondaryColor.withOpacity(0.5),
+                    height: 0.05,
+                  ),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: modificationOptions.length,
+                    itemBuilder: (context, index) {
+                      return OptionListTile(
+                        icon: modificationOptions[index]['icon'],
+                        title: modificationOptions[index]['title'],
+                        titleColor: kSecondaryColor,
+                        dividerColor: kSecondaryColor.withOpacity(0.5),
+                        onPressed: () {
+                          // implement navigation to required screen
+                        },
+                      );
+                    },
+                  ),
+                ],
               ),
             ),
           ),

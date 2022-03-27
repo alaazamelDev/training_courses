@@ -88,9 +88,7 @@ class _CoursesPageState extends State<CoursesPage> {
                     EdgeInsets.symmetric(horizontal: kDefaultHorizontalPadding),
                 child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio:
-                        (getScreenWidth(context) / getScreenHeight(context)) *
-                            1.5,
+                    childAspectRatio: 0.9,
                     crossAxisCount: 2,
                     mainAxisSpacing: kDefaultVerticalPadding * 0.5,
                     crossAxisSpacing: kDefaultHorizontalPadding * 0.5,

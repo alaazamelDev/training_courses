@@ -62,7 +62,12 @@ class HomeFragment extends StatelessWidget {
                   SizedBox(height: kDefaultVerticalPadding),
                   SizedBox(
                     height: getScreenHeight(context) * 0.25,
-                    child: ListView.builder(
+                    child: GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        childAspectRatio: 1,
+                        crossAxisCount: 1,
+                      ),
                       scrollDirection: Axis.horizontal,
                       padding: EdgeInsets.only(
                           left: kDefaultHorizontalPadding * 0.5),

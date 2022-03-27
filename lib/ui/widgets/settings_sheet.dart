@@ -75,7 +75,7 @@ class SettingsSheet extends StatelessWidget {
                       ),
                     ),
                     Divider(
-                      color: Colors.grey.withOpacity(0.5),
+                      color: Colors.white.withOpacity(0.5),
                       height: 0.05,
                     ),
                   ],

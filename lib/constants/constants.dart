@@ -4,7 +4,7 @@ import 'package:training_courses/constants/enums.dart';
 import 'package:training_courses/ui/pages/pages.dart';
 
 // constant colors
-const Color kPrimaryColor = Color(0xFF155B5A);
+const Color kPrimaryColor = Colors.teal;
 const Color kSecondaryColor = Color(0xFFFFFFFF);
 const Color kAccentColor = Color(0xFFFFBA00);
 const Color kGreyColor = Colors.grey;
@@ -75,11 +75,11 @@ final List modificationOptions = [
     'icon': Icons.lock_rounded,
     'title': 'Change the password',
   },
-  {
-    'icon': Icons.person_rounded,
-    'title': 'Name',
-    'trailing': Icons.arrow_forward_rounded
-  },
+  // {
+  //   'icon': Icons.person_rounded,
+  //   'title': 'Name',
+  //   'trailing': Icons.arrow_forward_rounded
+  // },
 ];
 
 // Settings sheet options list
@@ -125,7 +125,7 @@ final List availableClubs = [
 // Current courses list
 final List currentCourses = [
   {
-    'image': 'assets/user.jpg',
+    'image': 'assets/user.png',
     'name': 'Course',
     'date': '01234567',
   },

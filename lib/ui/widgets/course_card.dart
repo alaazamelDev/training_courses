@@ -29,18 +29,24 @@ class CourseCard extends StatelessWidget {
       child: Stack(
         children: [
           Container(
-            margin:
-                EdgeInsets.symmetric(vertical: kDefaultVerticalPadding * 0.5),
             decoration: BoxDecoration(
               color: kSecondaryColor,
               borderRadius: BorderRadius.circular(20),
             ),
+            margin: showExtraButton
+                ? EdgeInsets.only(bottom: kDefaultVerticalPadding * 0.5)
+                : const EdgeInsets.all(0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: showExtraButton
+                  ? MainAxisAlignment.start
+                  : MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: kDefaultHorizontalPadding),
+                  padding: EdgeInsets.only(
+                    left: kDefaultHorizontalPadding * 1.5,
+                    right: kDefaultHorizontalPadding * 1.5,
+                    top: kDefaultVerticalPadding * 0.5,
+                  ),
                   child: AspectRatio(
                     aspectRatio: 1,
                     child: ClipRRect(

@@ -19,7 +19,7 @@ class ProfileFragment extends StatelessWidget {
             color: kPrimaryColor,
             child: Center(
               child: CircleAvatar(
-                backgroundImage: const AssetImage('assets/user.jpg'),
+                backgroundImage: const AssetImage('assets/user.png'),
                 radius: ScreenUtil().setHeight(45),
               ),
             ),
@@ -55,30 +55,39 @@ class ProfileFragment extends StatelessWidget {
                   Expanded(
                     flex: 3,
                     child: Center(
-                      child: ListView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: profileOptions.length,
-                        itemBuilder: (context, index) {
-                          return OptionListTile(
-                            icon: profileOptions[index]['icon'],
-                            title: profileOptions[index]['title'],
-                            onPressed: () {
-                              // Move to the selected page
-                              switch (index) {
-                                case 0:
-                                  Navigator.pushNamed(context, '/clubs');
-                                  break;
-                                case 1:
-                                  _showSettingsSheet(context);
-                                  break;
-                                case 2:
-                                  // Implement Logout functionality
-                                  break;
-                              }
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Divider(
+                            color: Colors.grey.withOpacity(0.5),
+                            height: 0.05,
+                          ),
+                          ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: profileOptions.length,
+                            itemBuilder: (context, index) {
+                              return OptionListTile(
+                                icon: profileOptions[index]['icon'],
+                                title: profileOptions[index]['title'],
+                                onPressed: () {
+                                  // Move to the selected page
+                                  switch (index) {
+                                    case 0:
+                                      Navigator.pushNamed(context, '/clubs');
+                                      break;
+                                    case 1:
+                                      _showSettingsSheet(context);
+                                      break;
+                                    case 2:
+                                      // Implement Logout functionality
+                                      break;
+                                  }
+                                },
+                              );
                             },
-                          );
-                        },
+                          ),
+                        ],
                       ),
                     ),
                   ),
