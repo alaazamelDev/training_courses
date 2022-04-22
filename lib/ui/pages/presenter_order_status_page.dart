@@ -35,7 +35,7 @@ class OrderStatusPage extends StatelessWidget {
                   orderCurrentStage: ordersList[index]['currentStage'],
                   failedStages: ordersList[index]['failedStages'],
                   onPressed: () {
-                    _showNoteSheet(context);
+                    _showNoteSheet(context, index);
                   },
                 );
               },
@@ -64,7 +64,7 @@ class OrderStatusPage extends StatelessWidget {
   }
 }
 
-void _showNoteSheet(BuildContext context) {
+void _showNoteSheet(BuildContext context, int index) {
   showModalBottomSheet(
     context: context,
     backgroundColor: kPrimaryColor,
@@ -76,6 +76,23 @@ void _showNoteSheet(BuildContext context) {
       ),
     ),
     builder: (context) {
+      String message = 'Approved, we wish you success';
+      String btnLabel = 'Confirmation';
+
+      switch (index) {
+        case 1:
+          message = 'We apologize: the room was refused\ndue to unavailability';
+          btnLabel = 'Reorder';
+          break;
+        case 3:
+          message =
+              'The training course has\nbeencompleted, thank\nyou for that';
+          btnLabel = 'Report';
+          break;
+        default:
+          message = 'Approved, we wish you success';
+          btnLabel = 'Confirmation';
+      }
       return Container(
         height: getScreenHeight(context) * 0.5,
         width: getScreenWidth(context),
@@ -117,7 +134,8 @@ void _showNoteSheet(BuildContext context) {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
-                    'Approved, we wish you success',
+                    message,
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       color: kSecondaryColor,
                       fontSize: kTextFontSize,
@@ -125,7 +143,27 @@ void _showNoteSheet(BuildContext context) {
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.pop(context);
+                      switch (index) {
+                        case 1:
+                          int count = 0;
+                          Navigator.pushNamedAndRemoveUntil(
+                            context,
+                            '/request',
+                            (route) => count++ >= 2,
+                          );
+                          break;
+                        case 2:
+                          Navigator.pop(context);
+                          break;
+                        case 3:
+                          int count = 0;
+                          Navigator.pushNamedAndRemoveUntil(
+                            context,
+                            '/rating',
+                            (route) => count++ >= 2,
+                          );
+                          break;
+                      }
                     },
                     style: TextButton.styleFrom(
                       backgroundColor: kAccentColor,
@@ -139,7 +177,7 @@ void _showNoteSheet(BuildContext context) {
                         vertical: kDefaultVerticalPadding * 0.25,
                       ),
                       child: Text(
-                        'Confirmation',
+                        btnLabel,
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: kTitlesFontSize,

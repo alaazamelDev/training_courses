@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:training_courses/constants/enums.dart';
-import 'package:training_courses/ui/pages/pages.dart';
+import 'package:training_courses/ui/pages/presenter_pages.dart';
 
 // constant colors
 const Color kPrimaryColor = Colors.teal;
@@ -19,7 +19,9 @@ const double kDefaultIconSize = 30;
 // font sizes
 final kTitlesFontSize = 16.sp;
 final kTextFontSize = 14.sp;
+final kLabelFontSize = 12.sp;
 final kCourseTitleFontSize = 24.sp;
+final kPresenterNameTitle = 20.sp;
 final kUsernameFontSize = 24.sp;
 final kStepperFontSize = 10.sp;
 
@@ -43,13 +45,20 @@ var routes = {
   '/notifications': (context) => const NotificationsPage(),
   '/rating': (context) => const RatingPage(),
   '/course_details': (context) => const CourseDetailsPage(),
+  '/club_info': (context) => const ClubInformationPage(),
+  '/cv': (context) => const CvPage(),
+  '/request': (context) => const RequestPage(),
 };
 
 // profile page options list
 final List profileOptions = [
   {
-    'icon': Icons.account_balance_rounded,
-    'title': 'Clubs',
+    'icon': Icons.assignment_ind_outlined,
+    'title': 'view CV',
+  },
+  {
+    'icon': Icons.school_outlined,
+    'title': 'My training courses',
   },
   {
     'icon': Icons.settings_rounded,
@@ -187,6 +196,39 @@ final List previousCourses = [
     'image': 'assets/course.jpg',
     'name': 'Previous',
     'date': '98765432',
+  },
+];
+
+final List searchList = [
+  {
+    'image': 'assets/user.png',
+    'name': 'Course',
+    'date': '01234567',
+  },
+  {
+    'image': 'assets/course.jpg',
+    'name': 'Course',
+    'date': '01234567',
+  },
+  {
+    'image': 'assets/course.jpg',
+    'name': 'Course',
+    'date': '01234567',
+  },
+  {
+    'image': 'assets/course.jpg',
+    'name': 'Course',
+    'date': '01234567',
+  },
+  {
+    'image': 'assets/course.jpg',
+    'name': 'Coursee',
+    'date': '01234567',
+  },
+  {
+    'image': 'assets/course.jpg',
+    'name': 'Course',
+    'date': '01234567',
   },
 ];
 

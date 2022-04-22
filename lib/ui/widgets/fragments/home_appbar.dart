@@ -22,6 +22,18 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         },
         splashRadius: 20,
       ),
+      actions: [
+        IconButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/request');
+          },
+          splashRadius: 20,
+          icon: const Icon(
+            Icons.add,
+            color: kPrimaryColor,
+          ),
+        ),
+      ],
     );
   }
 

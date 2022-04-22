@@ -74,12 +74,17 @@ class ProfileFragment extends StatelessWidget {
                                   // Move to the selected page
                                   switch (index) {
                                     case 0:
-                                      Navigator.pushNamed(context, '/clubs');
+                                      Navigator.pushNamed(context, '/cv');
                                       break;
                                     case 1:
-                                      _showSettingsSheet(context);
+                                      Navigator.pushNamed(
+                                        context,
+                                        '/courses',
+                                        arguments: {'selected_index': 1},
+                                      );
                                       break;
                                     case 2:
+                                      _showSettingsSheet(context);
                                       // Implement Logout functionality
                                       break;
                                   }

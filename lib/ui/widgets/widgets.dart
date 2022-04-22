@@ -16,3 +16,5 @@ export 'fragments/home_fragment.dart';
 export 'fragments/profile_fragment.dart';
 export 'fragments/home_appbar.dart';
 export 'fragments/profile_appbar.dart';
+export 'fragments/search_appbar.dart';
+export 'fragments/search_fragment.dart';

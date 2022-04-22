@@ -21,13 +21,13 @@ class DetailsWidget extends StatelessWidget {
         children: [
           Icon(
             icon,
-            color: Colors.black,
+            color: Colors.teal,
           ),
           SizedBox(width: kDefaultHorizontalPadding),
           Text(
             title,
             style: TextStyle(
-              color: Colors.black,
+              color: Colors.teal,
               fontSize: kTextFontSize,
             ),
           ),

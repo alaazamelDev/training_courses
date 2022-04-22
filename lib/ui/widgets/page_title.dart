@@ -18,7 +18,7 @@ class PageTitle extends StatelessWidget {
         color: titleColor ?? kPrimaryColor,
         fontSize: kTitlesFontSize,
       ),
-      textAlign: TextAlign.center,
+      textAlign: TextAlign.end,
     );
   }
 }

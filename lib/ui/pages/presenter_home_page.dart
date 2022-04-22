@@ -26,10 +26,18 @@ class _HomePageState extends State<HomePage> {
       ),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(50),
-        child: pageIndex == 0 ? const HomeAppBar() : const ProfileAppBar(),
+        child: pageIndex == 0
+            ? const HomeAppBar()
+            : pageIndex == 1
+                ? const SearchAppBar()
+                : const ProfileAppBar(),
       ),
       body: Container(
-        child: pageIndex == 0 ? const HomeFragment() : const ProfileFragment(),
+        child: pageIndex == 0
+            ? const HomeFragment()
+            : pageIndex == 1
+                ? const SearchFragment()
+                : const ProfileFragment(),
       ),
     );
   }

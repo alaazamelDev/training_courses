@@ -11,17 +11,25 @@ class CoursesPage extends StatefulWidget {
 
 class _CoursesPageState extends State<CoursesPage> {
   int selectedTapIndex = 0;
+  bool updated = false;
+
   @override
   Widget build(BuildContext context) {
-    final data = ModalRoute.of(context)!.settings.arguments as Map;
-    final String name = data['name'];
+    var data = ModalRoute.of(context)?.settings.arguments;
+    if (data != null && !updated) {
+      selectedTapIndex = (data as Map<String, Object>)['selected_index'] as int;
+      updated = true;
+    }
     return Scaffold(
       backgroundColor: kPrimaryColor,
       appBar: AppBar(
         leading: const SizedBox(),
         backgroundColor: kSecondaryColor,
+        centerTitle: true,
         title: PageTitle(
-          title: '$name Training Courses',
+          title: selectedTapIndex == 0
+              ? 'My Training Courses'
+              : 'Training Courses',
         ),
         actions: const [
           AppBarBackButton(
@@ -50,7 +58,7 @@ class _CoursesPageState extends State<CoursesPage> {
                       }
                     },
                     child: Text(
-                      'current courses',
+                      'upcoming courses',
                       style: TextStyle(
                         color: selectedTapIndex == 0
                             ? kSecondaryColor
@@ -69,7 +77,7 @@ class _CoursesPageState extends State<CoursesPage> {
                       }
                     },
                     child: Text(
-                      'previous courses',
+                      'presented courses',
                       style: TextStyle(
                         color: selectedTapIndex == 1
                             ? kSecondaryColor
@@ -107,11 +115,9 @@ class _CoursesPageState extends State<CoursesPage> {
                       date: selectedTapIndex == 0
                           ? currentCourses[index]['date']
                           : previousCourses[index]['date'],
-                      showExtraButton: true,
-                      extraButtonColor:
-                          selectedTapIndex == 0 ? kAccentColor : Colors.red,
-                      extraButtonTitle:
-                          selectedTapIndex == 0 ? 'details' : 'rate',
+                      showExtraButton: selectedTapIndex != 0,
+                      extraButtonColor: kAccentColor,
+                      extraButtonTitle: 'report',
                       onPressed: () {
                         if (selectedTapIndex == 0) {
                           Navigator.pushNamed(context, '/course_details');
@@ -120,17 +126,6 @@ class _CoursesPageState extends State<CoursesPage> {
                         }
                       },
                     );
-                  },
-                ),
-              ),
-            ),
-            Expanded(
-              child: Center(
-                child: SubmitButton(
-                  title: 'Add a new course',
-                  radius: 15,
-                  onPressed: () {
-                    // Add course functionality
                   },
                 ),
               ),

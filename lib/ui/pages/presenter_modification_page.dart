@@ -14,7 +14,9 @@ class ModificationPage extends StatelessWidget {
         elevation: 0,
         backgroundColor: kPrimaryColor,
         leading: const SizedBox(),
-        actions: const [AppBarBackButton()],
+        actions: const [
+          AppBarBackButton(),
+        ],
       ),
       body: Column(
         children: [

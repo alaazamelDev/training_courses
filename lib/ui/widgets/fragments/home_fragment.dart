@@ -51,11 +51,16 @@ class HomeFragment extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(left: kDefaultHorizontalPadding),
-                    child: Text(
-                      'New training courses',
-                      style: TextStyle(
-                        color: kSecondaryColor,
-                        fontSize: kTitlesFontSize,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/courses');
+                      },
+                      child: Text(
+                        'New training courses',
+                        style: TextStyle(
+                          color: kSecondaryColor,
+                          fontSize: kTitlesFontSize,
+                        ),
                       ),
                     ),
                   ),

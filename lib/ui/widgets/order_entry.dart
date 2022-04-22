@@ -77,7 +77,7 @@ class OrderEntry extends StatelessWidget {
                 border: Border(bottom: BorderSide(color: kSecondaryColor)),
               ),
               child: Center(
-                child: orderCurrentStage > 3
+                child: orderCurrentStage > 3 || failedStages!.contains(4)
                     ? IconButton(
                         onPressed: onPressed,
                         icon: const Icon(

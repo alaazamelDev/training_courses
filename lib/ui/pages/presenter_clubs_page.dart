@@ -46,7 +46,9 @@ class ClubsPage extends StatelessWidget {
                         Navigator.pushNamed(
                           context,
                           '/courses',
-                          arguments: {'name': availableClubs[index]['name']},
+                          arguments: {
+                            'name': availableClubs[index]['name'],
+                          },
                         );
                       },
                       image: availableClubs[index]['image'],
